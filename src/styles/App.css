@@ -5,17 +5,33 @@
 
 body {
   background-color: azure;
+  margin: 2em;
 }
 
 .content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .left {
   align-self: left;
+  background-color: antiquewhite;
+  border-radius: 0.5em;
+  padding: 1em;
+  gap: 1em;
+  width: 40%;
 }
 
 .right {
   align-self: right;
+  background-color: beige;
+  border-radius: 0.5em;
+  padding: 1em;
+  gap: 1em;
+  width: 40%;
+}
+
+.divider {
+  border-top: 4px solid rgba(187, 187, 187, 0.651);
+  border-radius: 5px;
 }
