@@ -7,7 +7,6 @@ class GeneralForm extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { onUpdate } = this.props;
     return (
       <div>

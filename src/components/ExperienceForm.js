@@ -8,7 +8,6 @@ class ExperienceForm extends Component {
 
   render() {
     const { onUpdate } = this.props;
-    console.log("rendered");
 
     return (
       <div>

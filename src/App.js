@@ -23,8 +23,6 @@ class App extends Component {
         email: "matti.meikalainen@pizza.fi",
       },
       experience: [],
-      experienceList: [],
-      experienceForms: [],
     };
   }
 
@@ -40,9 +38,7 @@ class App extends Component {
   changeOnExperience = (event) => {
     this.setState({
       experience: this.state.experience.map((item) => {
-        console.log(event.target.parentNode.id);
         if (item.id == event.target.parentNode.id) {
-          console.log("MITÄ VITTUA");
           return {
             ...item,
             [event.target.name]: event.target.value,
@@ -52,11 +48,9 @@ class App extends Component {
         }
       }),
     });
-    console.log(this.state.experience);
   };
 
   addExperience = () => {
-    console.log(this.state.experience.length);
     this.setState({
       experience: this.state.experience.concat({
         company: "Pizza Oy",
@@ -64,18 +58,8 @@ class App extends Component {
         to: "2022",
         title: "Pizza baker",
         description: "I baked a lot of pizza",
-        id: this.state.experience.length,
+        id: uniqid(),
       }),
-      experienceForms: this.state.experienceForms.concat(
-        <ExperienceForm
-          onUpdate={this.changeOnExperience}
-          key={uniqid()}
-          id={this.state.experience.length}
-        />
-      ),
-      experienceList: this.state.experienceList.concat(
-        this.state.experience.length
-      ),
     });
   };
 
@@ -86,20 +70,21 @@ class App extends Component {
           <GeneralForm onUpdate={this.changeOnGeneral} />
           <hr className="divider"></hr>
           <button onClick={this.addExperience}>Add</button>
-          {this.state.experienceForms}
+          {this.state.experience.map((listItem) => {
+            return (
+              <ExperienceForm
+                onUpdate={this.changeOnExperience}
+                id={listItem.id}
+              />
+            );
+          })}
         </div>
         <div className="right">
           <General {...this.state.general} />
           <hr className="divider"></hr>
           <h1>Experience:</h1>
-          {this.state.experienceList.map((listItem) => {
-            return (
-              <Experience
-                {...this.state.experience[listItem]}
-                key={uniqid()}
-                id={listItem}
-              />
-            );
+          {this.state.experience.map((listItem) => {
+            return <Experience {...listItem} id={listItem.id} />;
           })}
         </div>
       </div>
