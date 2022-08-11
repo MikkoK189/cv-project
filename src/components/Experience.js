@@ -7,7 +7,6 @@ class Experience extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="experience">
         <h1>{this.props.company}</h1>

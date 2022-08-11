@@ -7,11 +7,12 @@ class ExperienceForm extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { onUpdate } = this.props;
+    console.log("rendered");
+
     return (
       <div>
-        <form className="general-form">
+        <form className="general-form" id={this.props.id}>
           <label htmlFor="company">Company</label>
           <input
             onChange={onUpdate}

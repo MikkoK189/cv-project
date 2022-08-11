@@ -7,7 +7,6 @@ class General extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="general">
         <h1>{this.props.personName}</h1>
