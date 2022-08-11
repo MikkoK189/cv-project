@@ -7,14 +7,16 @@ class Experience extends Component {
   }
 
   render() {
+    const { company, title, from, to, description } = this.props;
+
     return (
       <div className="experience">
-        <h1>{this.props.company}</h1>
-        <p>{this.props.title}</p>
+        <h1>{company}</h1>
+        <p>{title}</p>
         <p>
-          {this.props.from} - {this.props.to}
+          {from} - {to}
         </p>
-        <p>{this.props.description}</p>
+        <p>{description}</p>
       </div>
     );
   }
