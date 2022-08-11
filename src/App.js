@@ -27,17 +27,17 @@ class App extends Component {
   }
 
   changeOnGeneral = (event) => {
-    this.setState({
+    this.setState((prevState) => ({
       general: {
-        ...this.state.general,
+        ...prevState.general,
         [event.target.name]: event.target.value,
       },
-    });
+    }));
   };
 
   changeOnExperience = (event) => {
-    this.setState({
-      experience: this.state.experience.map((item) => {
+    this.setState((prevState) => ({
+      experience: prevState.experience.map((item) => {
         if (item.id == event.target.parentNode.id) {
           return {
             ...item,
@@ -47,20 +47,23 @@ class App extends Component {
           return item;
         }
       }),
-    });
+    }));
   };
 
   addExperience = () => {
-    this.setState({
-      experience: this.state.experience.concat({
-        company: "Pizza Oy",
-        from: "2000",
-        to: "2022",
-        title: "Pizza baker",
-        description: "I baked a lot of pizza",
-        id: uniqid(),
-      }),
-    });
+    this.setState((prevState) => ({
+      experience: [
+        ...prevState.experience,
+        {
+          company: "Pizza Oy",
+          from: "2000",
+          to: "2022",
+          title: "Pizza baker",
+          description: "I baked a lot of pizza",
+          id: uniqid(),
+        },
+      ],
+    }));
   };
 
   render() {
